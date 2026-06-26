@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "124598436116",
+    "project_id": "rapidresq-90a10",
+    "storage_bucket": "rapidresq-90a10.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124598436116:android:cfd34090f535a3bc354201",
+        "android_client_info": {
+          "package_name": "com.example.rapid_resq"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaTHLSR9rQwSIlYZEeuJRF2jdbInCaN4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124598436116:android:93738e388963d82a354201",
+        "android_client_info": {
+          "package_name": "com.example.rapidresq_patient"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaTHLSR9rQwSIlYZEeuJRF2jdbInCaN4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

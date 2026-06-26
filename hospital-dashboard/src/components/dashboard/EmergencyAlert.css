@@ -1,0 +1,572 @@
+/* src/components/dashboard/EmergencyAlert.css */
+
+/* Main Container */
+.emergency-alert {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.emergency-alert:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Status-based border colors */
+.emergency-alert.pending {
+  border-left-color: #f39c12;
+}
+
+.emergency-alert.accepted {
+  border-left-color: #2ecc71;
+}
+
+.emergency-alert.rejected {
+  border-left-color: #e74c3c;
+  opacity: 0.7;
+}
+
+.emergency-alert.completed {
+  border-left-color: #3498db;
+  opacity: 0.7;
+}
+
+.emergency-alert.cancelled {
+  border-left-color: #95a5a6;
+  opacity: 0.6;
+}
+
+/* Critical emergency */
+.emergency-alert.critical {
+  background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+  border-left-width: 6px;
+  animation: criticalPulse 2s ease-in-out infinite;
+}
+
+@keyframes criticalPulse {
+  0%, 100% {
+    box-shadow: 0 2px 4px rgba(231, 76, 60, 0.1);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+  }
+}
+
+/* New emergency animation */
+.emergency-alert.new {
+  animation: slideIn 0.5s ease-out, glow 2s ease-in-out 3;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 2px 4px rgba(243, 156, 18, 0.1);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.4);
+  }
+}
+
+/* Header Section */
+.emergency-alert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.patient-info {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.patient-name {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.patient-age {
+  font-size: 0.875rem;
+  color: #7f8c8d;
+}
+
+/* Badges Container */
+.emergency-badges {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Emergency Badge */
+.emergency-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s ease;
+}
+
+.emergency-badge:hover {
+  transform: scale(1.05);
+}
+
+.emergency-badge.critical {
+  background: #e74c3c;
+  color: white;
+  animation: badgePulse 1s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+/* Severity badges */
+.emergency-badge.severity-critical {
+  background: #e74c3c;
+  color: white;
+}
+
+.emergency-badge.severity-high {
+  background: #f39c12;
+  color: white;
+}
+
+.emergency-badge.severity-medium {
+  background: #3498db;
+  color: white;
+}
+
+.emergency-badge.severity-low {
+  background: #95a5a6;
+  color: white;
+}
+
+/* Status Badge */
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.pending {
+  background: #f39c12;
+  color: white;
+}
+
+.status-badge.accepted {
+  background: #2ecc71;
+  color: white;
+}
+
+.status-badge.rejected {
+  background: #e74c3c;
+  color: white;
+}
+
+.status-badge.completed {
+  background: #3498db;
+  color: white;
+}
+
+.status-badge.cancelled {
+  background: #95a5a6;
+  color: white;
+}
+
+/* Details Section */
+.emergency-alert-details {
+  margin-bottom: 1rem;
+}
+
+.emergency-condition,
+.emergency-type,
+.blood-type,
+.emergency-description,
+.emergency-location,
+.emergency-time,
+.assigned-hospital {
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #2c3e50;
+}
+
+.emergency-condition strong,
+.emergency-type strong,
+.blood-type strong,
+.emergency-description strong,
+.emergency-location strong,
+.emergency-time strong,
+.assigned-hospital strong {
+  color: #7f8c8d;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.emergency-description {
+  background: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+
+.emergency-location {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #3498db;
+}
+
+.emergency-time {
+  color: #95a5a6;
+  font-size: 0.75rem;
+}
+
+.assigned-hospital {
+  color: #2ecc71;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed #ecf0f1;
+}
+
+/* Actions Buttons */
+.emergency-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.accept-btn,
+.reject-btn,
+.details-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.accept-btn {
+  background: #2ecc71;
+  color: white;
+}
+
+.accept-btn:hover:not(:disabled) {
+  background: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(46, 204, 113, 0.3);
+}
+
+.reject-btn {
+  background: #e74c3c;
+  color: white;
+}
+
+.reject-btn:hover:not(:disabled) {
+  background: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}
+
+.details-btn {
+  background: #3498db;
+  color: white;
+}
+
+.details-btn:hover:not(:disabled) {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+.accept-btn:disabled,
+.reject-btn:disabled,
+.details-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Expanded Details */
+.emergency-details-expanded {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #ecf0f1;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.emergency-details-expanded h5 {
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #7f8c8d;
+}
+
+.detail-value {
+  color: #2c3e50;
+  font-family: monospace;
+  font-size: 0.8125rem;
+}
+
+/* Timeline */
+.timeline {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.timeline strong {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: #2c3e50;
+  font-size: 0.875rem;
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-left: 3px solid;
+  padding-left: 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.timeline-item.created {
+  border-left-color: #3498db;
+}
+
+.timeline-item.accepted {
+  border-left-color: #2ecc71;
+}
+
+.timeline-item.rejected {
+  border-left-color: #e74c3c;
+}
+
+.timeline-item.completed {
+  border-left-color: #3498db;
+}
+
+.timeline-status {
+  font-weight: 600;
+  color: #2c3e50;
+  text-transform: capitalize;
+}
+
+.timeline-time {
+  color: #95a5a6;
+  font-size: 0.75rem;
+}
+
+/* Loading spinner */
+.loading-spinner-small {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .emergency-alert {
+    padding: 1rem;
+  }
+
+  .emergency-alert-header {
+    flex-direction: column;
+  }
+
+  .emergency-badges {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .emergency-actions {
+    flex-direction: column;
+  }
+
+  .accept-btn,
+  .reject-btn,
+  .details-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .emergency-alert {
+    background: #2c3e50;
+  }
+
+  .patient-name {
+    color: #ecf0f1;
+  }
+
+  .emergency-condition,
+  .emergency-type,
+  .blood-type,
+  .emergency-description,
+  .emergency-location,
+  .emergency-time,
+  .assigned-hospital {
+    color: #bdc3c7;
+  }
+
+  .emergency-description {
+    background: #34495e;
+  }
+
+  .detail-row {
+    background: #34495e;
+  }
+
+  .detail-value {
+    color: #ecf0f1;
+  }
+
+  .timeline {
+    background: #34495e;
+  }
+
+  .timeline-status {
+    color: #ecf0f1;
+  }
+}
+
+/* Print styles */
+@media print {
+  .emergency-alert {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 1px solid #ddd;
+    box-shadow: none;
+  }
+
+  .emergency-actions {
+    display: none;
+  }
+
+  .emergency-badge,
+  .status-badge {
+    border: 1px solid #ddd;
+    background: none !important;
+    color: #000 !important;
+  }
+}
+/* Add this to your EmergencyAlert.css file */
+
+/* Loading spinner */
+.loading-spinner-small {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.6s linear infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Ensure buttons with loading state have proper spacing */
+.accept-btn, .reject-btn, .details-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}

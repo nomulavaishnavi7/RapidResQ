@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users collection
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Hospitals collection
+    match /hospitals/{hospitalId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && 
+        (request.auth.token.hospitalId == hospitalId || request.auth.token.role == 'admin');
+    }
+    
+    // Emergency requests
+    match /emergency_requests/{emergencyId} {
+      allow read: if request.auth != null && 
+        (request.auth.uid == resource.data.patientId || 
+         request.auth.token.hospitalId == resource.data.assignedHospital ||
+         request.auth.token.role == 'admin');
+      allow write: if request.auth != null;
+    }
+    
+    // Ambulance locations
+    match /ambulance_locations/{ambulanceId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && 
+        request.auth.token.ambulanceId == ambulanceId;
+    }
+  }
+}
